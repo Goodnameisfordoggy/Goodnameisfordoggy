@@ -1,0 +1,47 @@
+name: 编程语言统计
+
+# 在推送代码或创建PR时触发
+on: [push, pull_request]
+
+jobs:
+  generate-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 需要写入权限来更新结果
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+      
+      - name: 生成编程语言统计
+        uses: lowlighter/metrics@latest
+        with:
+          # 基础配置
+          token: ${{ secrets.GITHUB_TOKEN }}  # 使用内置token
+          user: ${{ github.repository_owner }}  # 当前仓库所有者
+          template: repository  # 使用仓库模板
+          
+          # 启用编程语言插件
+          plugin_languages: yes
+          
+          # 忽略的语言（可选）
+          # plugin_languages_ignored: html, css
+          
+          # 忽略的仓库（可选）
+          # plugin_languages_skipped: my-test-repo
+          
+          # 自定义语言颜色（可选）
+          plugin_languages_colors: "0:orange, javascript:#ff0000, python:#306998"
+          
+          # 显示详细信息：字节大小和百分比
+          plugin_languages_details: bytes-size, percentage
+          
+          # 隐藏占比低于2%的语言
+          plugin_languages_threshold: 1%
+          
+          # 最多显示8种语言
+          plugin_languages_limit: 8
+          
+          # 输出配置
+          output: metrics.languages.svg  # 输出为SVG文件
+          filename: ./metrics_languages.svg  # 保存路径
