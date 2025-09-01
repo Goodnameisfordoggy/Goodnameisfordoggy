@@ -1,47 +1,45 @@
-name: 编程语言统计
-
-# 在推送代码或创建PR时触发
+name: "编程语言统计"
 on: [push, pull_request]
 
 jobs:
   generate-metrics:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # 需要写入权限来更新结果
+      contents: write
     
     steps:
       - name: 检出代码
         uses: actions/checkout@v4
       
-      - name: 生成编程语言统计
+      - name: 生成最常用编程语言统计
         uses: lowlighter/metrics@latest
         with:
-          # 基础配置
-          token: ${{ secrets.GITHUB_TOKEN }}  # 使用内置token
-          user: ${{ github.repository_owner }}  # 当前仓库所有者
-          template: repository  # 使用仓库模板
+          # 基础配置：匹配插件支持的目标类型（user/organization/repository）
+          template: user  # 因插件支持user类型，与目标对象匹配
+          user: ${{ github.repository_owner }}  # 统计当前用户的仓库
+          token: ${{ secrets.GITHUB_TOKEN }}
           
           # 启用编程语言插件
           plugin_languages: yes
           
-          # 忽略的语言（可选）
+          # 忽略指定语言（可选，多个用逗号分隔）
           # plugin_languages_ignored: html, css
           
-          # 忽略的仓库（可选）
-          # plugin_languages_skipped: my-test-repo
+          # 跳过指定仓库（可选，支持"仓库名"或"所有者/仓库名"格式）
+          # plugin_languages_skipped: test-repo, Goodnameisfordoggy/old-repo
           
-          # 自定义语言颜色（可选）
-          plugin_languages_colors: "0:orange, javascript:#ff0000, python:#306998"
-          
-          # 显示详细信息：字节大小和百分比
-          plugin_languages_details: bytes-size, percentage
-          
-          # 隐藏占比低于2%的语言
-          plugin_languages_threshold: 1%
-          
-          # 最多显示8种语言
+          # 最多显示的语言数量（官方限制最大为8）
           plugin_languages_limit: 8
           
-          # 输出配置
-          output: metrics.languages.svg  # 输出为SVG文件
+          # 自定义语言颜色（索引或语言名+颜色）
+          plugin_languages_colors: "0:orange, javascript:#ff0000, python:#306998"
+          
+          # 显示额外信息（字节大小和百分比）
+          plugin_languages_details: bytes-size, percentage
+          
+          # 最小显示阈值（百分比格式）
+          plugin_languages_threshold: "1%"
+          
+          # 输出配置（使用插件支持的参数）
+          config_output: svg  # 输出格式（官方支持svg/json/markdown等）
           filename: ./metrics_languages.svg  # 保存路径
