@@ -8,39 +8,17 @@ jobs:
       contents: write
     
     steps:
-      - name: 检出代码
-        uses: actions/checkout@v4
-      
-      - name: 生成最常用编程语言统计
-        uses: lowlighter/metrics@v3.34.0
+      - name: Indepth analysis
+        uses: lowlighter/metrics@latest
         with:
-          # 基础配置：匹配插件支持的目标类型（user/organization/repository）
-          template: classic
-          user: ${{ github.repository_owner }}  # 统计当前用户的仓库
-          base: yes  # 关键：加载用户基础数据，让模板能承载插件统计结果
-          token: ${{ secrets.GITHUB_TOKEN }}
-          
-          # 启用编程语言插件
+          filename: metrics.plugin.languages.indepth.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: ""
           plugin_languages: yes
-          
-          # 忽略指定语言（可选，多个用逗号分隔）
-          # plugin_languages_ignored: html, css
-          
-          # 跳过指定仓库（可选，支持"仓库名"或"所有者/仓库名"格式）
-          # plugin_languages_skipped: test-repo, Goodnameisfordoggy/old-repo
-          
-          # 最多显示的语言数量（官方限制最大为8）
-          plugin_languages_limit: 8
-          
-          # 自定义语言颜色（索引或语言名+颜色）
-          plugin_languages_colors: "0:orange, javascript:#ff0000, python:#306998"
-          
-          # 显示额外信息（字节大小和百分比）
-          plugin_languages_details: bytes-size, percentage
-          
-          # 最小显示阈值（百分比格式）
-          plugin_languages_threshold: "1%"
-          
-          # 输出配置（使用插件支持的参数）
-          config_output: svg  # 输出格式（官方支持svg/json/markdown等）
-          filename: ./metrics_languages.svg  # 保存路径
+          plugin_languages_ignored: >-
+            html, css, tex, less, dockerfile, makefile, qmake, lex, cmake, shell,
+            gnuplot
+          plugin_languages_indepth: yes
+          plugin_languages_details: lines, bytes-size
+          plugin_languages_limit: 4
+          plugin_languages_analysis_timeout: 15
