@@ -12,11 +12,12 @@ jobs:
         uses: actions/checkout@v4
       
       - name: 生成最常用编程语言统计
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@v3.34.0
         with:
           # 基础配置：匹配插件支持的目标类型（user/organization/repository）
-          template: user  # 因插件支持user类型，与目标对象匹配
+          template: classic
           user: ${{ github.repository_owner }}  # 统计当前用户的仓库
+          base: yes  # 关键：加载用户基础数据，让模板能承载插件统计结果
           token: ${{ secrets.GITHUB_TOKEN }}
           
           # 启用编程语言插件
