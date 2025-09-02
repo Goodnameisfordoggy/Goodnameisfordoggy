@@ -1,7 +1,8 @@
 name: "编程语言统计"
-on: [push, pull_request]
-  # schedule: [{cron: "0 16 * * *"}]
-  # workflow_dispatch:
+on: 
+  # [push, pull_request]
+  schedule: [{cron: "0 8 * * *"}]
+  workflow_dispatch:
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
@@ -17,7 +18,8 @@ jobs:
           base: header, activity, community, repositories
           base_indepth: yes
           plugin_isocalendar: yes
-          # output_action: write
+          output_action: write
+          
       - name: Plugin
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
@@ -31,8 +33,9 @@ jobs:
           plugin_languages_sections: most-used
           plugin_languages_indepth: yes
           plugin_languages_limit: 8
+          plugin_languages_threshold: 1%
           plugin_topics: yes
-          plugin_topics_limit: 1
+          plugin_topics_limit: 2
           plugin_topics_mode: icons
           plugin_notable: yes
           plugin_notable_indepth: yes
