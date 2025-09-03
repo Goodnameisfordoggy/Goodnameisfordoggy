@@ -1,8 +1,8 @@
 name: "官方API数据统计与图表生成"
 
 on:
-  push:
-    branches: [ main ]
+  # push:
+  #   branches: [ main ]
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
