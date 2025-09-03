@@ -1,4 +1,4 @@
-name: "metrics"
+name: "使用 Metrics 生成统计图表"
 on: 
   # [push, pull_request]
   schedule: [{cron: "0 0 * * *"}]   # UTC时间；北京时间（UTC+8）；设置早八更新
@@ -13,7 +13,7 @@ jobs:
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.general.calendar.svg
+          filename: generated/metrics.general.calendar.svg
           token: ${{ secrets.METRICS_TOKEN }}
           base: header, activity, community, repositories
           base_indepth: yes
@@ -24,7 +24,7 @@ jobs:
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.languages.svg
+          filename: generated/metrics.plugin.languages.svg
           token: ${{ secrets.METRICS_TOKEN }}
           base: ""
           config_order: languages, notable, discussions, topics

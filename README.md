@@ -1,8 +1,8 @@
 # Goodnameisfordoggy
 
 
-<img align="right" width="390" alt="Metrics.calendar" src="/metrics.general.calendar.svg">
-<img align="left" width="390" alt="Metrics.languages" src="/metrics.plugin.languages.svg">
+<img align="right" width="390" alt="Metrics.calendar" src="generated/metrics.general.calendar.svg">
+<img align="left" width="390" alt="Metrics.languages" src=generated/metrics.plugin.languages.svg">
 
 <!-- 清除浮动，让文字出现在图片下方 -->
 <br clear="both">

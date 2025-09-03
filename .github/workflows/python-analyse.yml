@@ -1,0 +1,61 @@
+name: "官方API数据统计与图表生成"
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 检查位于 $GITHUB_WORKSPACE 目录下的存储库，以便该任务能够访问它
+    - uses: actions/checkout@v3
+
+    # 需使用 Python 3.8 版本运行，以确保一致性并使用 aiohttp 库
+    - name: 安装Python 3.8
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+        architecture: 'x64'
+        cache: 'pip'
+
+    # 使用 pip 安装依赖
+    - name: pip安装依赖
+      run: |
+        python3 -m pip install --upgrade pip setuptools wheel
+        python3 -m pip install -r requirements.txt
+
+    # 生成所有统计图表
+    - name: 生成统计图表
+      run: |
+        python3 --version
+        python3 generate_images.py
+      env:
+      # 仓库 secrets 中自定义
+        ACCESS_TOKEN: ${{ secrets.METRICS_TOKEN }}
+        # GitHub Actions 自动生成的临时令牌，默认具有当前仓库的读写权限。
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # 指定需要排除统计的仓库，格式为仓库名称的逗号分隔列表（如 repo1,repo2）
+        EXCLUDED: ${{ secrets.EXCLUDED }}
+        # 指定需要排除统计的编程语言，格式为语言名称的逗号分隔列表（如 markdown,html）
+        EXCLUDED_LANGS: ${{ secrets.EXCLUDED_LANGS }}
+        # 默认true，表示排除统计所有 Fork（复刻）的仓库
+        EXCLUDE_FORKED_REPOS: true
+
+    # 将所有已更改的文件提交至存储库
+    - name: 提交全部更改
+      run: |
+        # 配置虚拟环境中的 git 信息
+        git config --global user.name "Goodnameisfordoggy/Goodnameisfordoggy"
+        git config --global user.email "Goodnameisfordoggy[bot]@Goodnameisfordoggy.github.io"
+        git add .
+        # 强制构建成功，即便没有任何文件发生更改
+        git commit -m 'Update generated files' || true
+        git push
