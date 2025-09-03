@@ -34,10 +34,10 @@ jobs:
           plugin_languages_indepth: yes
           plugin_languages_limit: 6
           plugin_languages_threshold: 0%
-          plugin_topics: yes
-          plugin_topics_limit: 2
-          plugin_topics_mode: icons
-          plugin_notable: yes
-          plugin_notable_indepth: yes
+          # plugin_topics: yes
+          # plugin_topics_limit: 2
+          # plugin_topics_mode: icons
+          # plugin_notable: yes
+          # plugin_notable_indepth: yes
           plugin_discussions: yes
           output_action: write
