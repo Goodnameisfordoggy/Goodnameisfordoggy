@@ -9,7 +9,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: 日历统计
+      - name: 贡献日历统计
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
@@ -20,7 +20,7 @@ jobs:
           plugin_isocalendar: yes
           output_action: write
           
-      - name: 语言统计
+      - name: 编程语言统计
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
@@ -32,8 +32,8 @@ jobs:
           plugin_languages_details: lines, bytes-size, percentage
           plugin_languages_sections: most-used
           plugin_languages_indepth: yes
-          plugin_languages_limit: 8
-          plugin_languages_threshold: 1%
+          plugin_languages_limit: 6
+          plugin_languages_threshold: 0%
           plugin_topics: yes
           plugin_topics_limit: 2
           plugin_topics_mode: icons
