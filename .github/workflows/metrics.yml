@@ -1,15 +1,15 @@
-name: "编程语言统计"
+name: "metrics"
 on: 
   # [push, pull_request]
-  schedule: [{cron: "0 8 * * *"}]
-  workflow_dispatch:
+  schedule: [{cron: "0 0 * * *"}]   # UTC时间；北京时间（UTC+8）；设置早八更新
+  workflow_dispatch:                # 允许手动触发 action
 jobs:
   github-metrics:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-      - name: General
+      - name: 日历统计
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
@@ -20,7 +20,7 @@ jobs:
           plugin_isocalendar: yes
           output_action: write
           
-      - name: Plugin
+      - name: 语言统计
         if: ${{ success() || failure() }}
         uses: lowlighter/metrics@latest
         with:
