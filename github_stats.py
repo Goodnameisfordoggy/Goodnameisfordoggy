@@ -1,13 +1,22 @@
-"""
+'''
+Author: HDJ @https://github.com/Goodnameisfordoggy
+LastEditTime: 2025-09-05 16:41:44
+FilePath: \pythond:\LocalUsers\Goodnameisfordoggy-Gitee\Goodnameisfordoggy\github_stats.py
+Description: @VSCode
 使用API查询用户数据与格式化
-"""
-import asyncio
+				|	早岁已知世事艰，仍许飞鸿荡云间；
+				|	曾恋嘉肴香绕案，敲键弛张荡波澜。
+				|					 
+				|	功败未成身无畏，坚持未果心不悔；
+				|	皮囊终作一抔土，独留屎山贯寰宇。
+
+Copyright (c) 2024-2025 by HDJ, All Rights Reserved. 
+'''
 import os
-from typing import Dict, List, Optional, Set, Tuple, Any, cast
-
 import aiohttp
+import asyncio
 import requests
-
+from typing import Dict, List, Optional, Set, Tuple, Any, cast
 
 ###############################################################################
 # Main Classes
