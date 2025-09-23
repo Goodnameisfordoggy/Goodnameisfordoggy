@@ -13,17 +13,12 @@
 
 ## 📜 Github stats:
 
-<div align="center">
-    <img src="https://raw.githubusercontent.com/Goodnameisfordoggy/Goodnameisfordoggy/main/generated/overview.svg#gh-dark-mode-only" width="50%" ><img src="https://raw.githubusercontent.com/Goodnameisfordoggy/Goodnameisfordoggy/main/generated/languages.svg#gh-dark-mode-only" width="50%" >
-</div>
-
-<div align="center">
-    <img src="https://raw.githubusercontent.com/Goodnameisfordoggy/Goodnameisfordoggy/main/generated/overview.svg#gh-light-mode-only" width="50%" ><img src="https://raw.githubusercontent.com/Goodnameisfordoggy/Goodnameisfordoggy/main/generated/languages.svg#gh-light-mode-only" width="50%" >
-</div>
+![Github stats overview](https://raw.githubusercontent.com/Goodnameisfordoggy/Goodnameisfordoggy/main/generated/overview.svg#gh-dark-mode-only")![Github stats languages](https://raw.githubusercontent.com/Goodnameisfordoggy/Goodnameisfordoggy/main/generated/languages.svg#gh-dark-mode-only)
+![Github stats overview](https://raw.githubusercontent.com/Goodnameisfordoggy/Goodnameisfordoggy/main/generated/overview.svg#gh-light-mode-only")![Github stats languages](https://raw.githubusercontent.com/Goodnameisfordoggy/Goodnameisfordoggy/main/generated/languages.svg#gh-light-mode-only)
 
 ## ⚔️ Activity
 <div align="center">
-    <img src="https://raw.githubusercontent.com/Goodnameisfordoggy/Goodnameisfordoggy/main/generated/metrics.general.calendar.svg" width="60%" >
+    <img alt="Github Activity" src="https://raw.githubusercontent.com/Goodnameisfordoggy/Goodnameisfordoggy/main/generated/metrics.general.calendar.svg" width="60%" >
 </div>
 
 
