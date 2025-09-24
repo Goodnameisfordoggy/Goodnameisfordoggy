@@ -1,7 +1,7 @@
 # <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="40px">About Me 
 
 <div align=center>
-    <img src="https://readme-typing-svg.demolab.com/?font=VT323&size=30&duration=4500&pause=500&color=CF7719&center=true&vCenter=true&width=600&lines=Hi%2C+I+am+Huo Dongjun;Welcome+to+My+GitHub+Profile;University+Man+of;Computer+Science+and+Technology+major;Automation+and+back-end+Developer;Minecraft+and+Badminton+aficionado;Music+and+Programming+Lover" alt="Typing svg" />
+    <img src="https://readme-typing-svg.demolab.com/?font=VT323&size=30&duration=4500&pause=500&color=CF7719&center=true&vCenter=true&width=600&lines=Hi%2C+I+am+Huo%20Dongjun;Welcome+to+My+GitHub+Profile;University+Man+of;Computer+Science+and+Technology+major;Automation+and+back-end+Developer;Minecraft+and+Badminton+aficionado;Music+and+Programming+Lover" alt="Typing svg" />
 </div>
 
 <details id="audioDetails">
